@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>1 by 0 Tech - Class Apart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root{
+            --color1: #92C8EC;
+            --color2: white;
+            --color3: rgb(134,132,132);
+            --background: whitesmoke;
+            --calendarHead: white;
+            --days: white;
+            --calendarBackground: white;
+            --present: white;
+            --absent: #FB8E8E;
+            --weekOff: #d3d3d3;
+            --dateDiv: white;
+            --schedule: rgb(250,200,205);
+            --alerts:#7FC6A4;
+            --assignments:#B9DCF2;
+        }
+        body{
+            background-color: var(--background);
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0px;
+        }
+        nav{
+            height: 3.6rem;
+            background-color: var(--color1);
+        }
+        nav > div > span{
+            width: 100%;
+            height: 3.6rem;
+            padding: 1rem;
+            text-decoration: none;
+            color: black;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        nav > div > a{
+            height: 3.6rem;
+            padding: 1rem;
+            padding-right: 2rem;
+            text-decoration: none;
+            color: black;
+            font-size: 1.2rem;
+            float: right;
+            z-index: 1000;
+        }
+        nav > div > a:hover{
+            background-color: var(--background);
+            transition-duration: 250ms;
+        }
+        ul{
+            list-style-type: none;
+            background-color: var(--schedule);
+        }
+        ul > li{
+            padding: 10px;
+            font-size: 1.13rem;
+        }
+        body > div{
+            float: left;
+            padding-right: 5vw;
+            padding-left: 5vw;
+            width: 50%;
+        }
+        center{
+            display: flex;
+            justify-items: flex-end;
+        }
+        p{
+            text-align: justify;
+            line-height: 1.3rem;
+        }
+        .footer{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .footer > div{
+            flex-grow: 1;
+            font-size: 0.7rem;
+            padding: 0.7rem;
+            background-color: var(--color1);
+            text-align: center;
+            opacity: 0.80;
+        }
+        .video{
+            /* padding-top: 56.25%; 16:9 Aspect Ratio */
+        }
+        iframe{
+            position: absolute;
+            top: 1rem;
+            right: 0;
+            width: 45%;
+            height: 95%;
+            padding: 0px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            /* background-color: black; */
+            margin-left: -100px;
+            z-index: -1;
+            clip-path: inset(0 25.7% 0 25.6% );
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div><span>1 by 0 Tech</span></div>
+        <div><a href="https://sharadgacharya.bitbucket.io/classapart.html">Class Apart</a></div>
+        <div><a>Instructions</a></div>
+        <div><a>Help</a></div>
+        <div><a href='forms.html'>Contact Us</a></div>
+    </nav>
+    <div class="why">
+        <p>We have experienced the daily hassles of a tutorial. </p>
+        <p>There are so many things to juggle from ensuring every scheduled class is on time to making sure the necessary faculty is available for the lecture. There are so many moving parts!!!</p>
+        <p>Making sure that it functions as a well-oiled machinery is not an easy task. We want to help you in your endeavour and bring you Class Apart to take care of one end of your burden</p>
+        <p>We understand that teaching is only one aspect of communication that needs to be handled. There is another aspect that might not be at the spotlight of your institute but it cannot function without it. Talking to parents and keeping them up to date is a very arduous process but important nonetheless.</p>
+        <ul>
+            <li>Is my child attending the class regularly?</li>
+            <li>Are there regular tests being conducted?</li>
+            <li>When was the last test?</li>
+            <li>When is the next one?</li>
+            <li>Was it a holiday on Monday? My son said so!</li>
+            <li>I don't think you give any homework. My daughter doesn't study at home whatsoever</li>
+            <li>You didn't complete your portion on time, that's the reason my son didn't fare well in the exams.</li>
+            <li>Is it time to pay the next installment of the fees? I thought it's next month</li>
+            <li>I tried calling you but nobody answered the phone</li>
+            <li>I'm at work most of the times. Call my wife</li>
+            <li>You should call my husband. He understands these things better</li>
+        </ul>
+        <p class='center'>If you have had parents say this, then we can help!</p>
+    </div>
+    <div class="footer">
+        <div>Terms and Conditions</div>
+        <div>Privacy Policy</div>
+    </div>  
+
+    <div class='video'>
+            <iframe src="https://www.youtube.com/embed/V2l4Hf9vBm0?autoplay=1&loop=1&controls=0&rel=0&amp;start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+</body>
+</html>

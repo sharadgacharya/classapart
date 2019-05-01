@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head profile="http://www.w3.org/2005/10/profile">
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="Description" content="Class Apart App helps connect the class/tutorial to the parents to keep them updated about student's information with regards to test results, schedule, attendance, upcoming exams, holidays and assignments/homework.">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+      <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
+      <link rel="manifest" href="manifest.webmanifest">
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>      <script src="js/idb.js"></script>
+      <script src="js/get.js"></script>
+      <script src="js/calendar.js"></script>
+      <script src="js/display.js"></script>
+      
+	    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" type="text/css" href="css/functionality.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+
+      <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="theme-color" content="#ffffff">
+
+      <title>Class Apart - Connecting Parents and Classes</title>
+    </head>
+
+    <body class="w3-mobile w3-panel">
+      <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top" >
+          <div class="container-fluid noPadding">
+              <div class="navbar-toggle" onclick="toggleMenu()">
+                <img id='menuIcon' src="ico/menu.svg"/>
+              </div>
+              <a class="navbar-brand">Class Apart</a>
+            </div>
+            <div class="navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navlist">
+                <li><a onclick="home();toggleMenu();"><img src='ico/home.svg'><span>Home</span></a></li>
+                <li><a onclick="subjects();toggleMenu();"><img src='ico/subjects.svg'><span>Subjects</span></a></li>
+                <li><a onclick="calendar();toggleMenu();"><img src='ico/calendar.svg'><span>Calendar</span></a></li>
+                <li><a onclick="fees();toggleMenu();"><img src='ico/fees.svg'><span>Fees</span></a></li>
+                <li><a onclick="changeStudent();toggleMenu();"><img src='ico/changeStudent.svg'><span>Change Student</span></a></li>
+                <li><a onclick="about();toggleMenu();"><img src='ico/about.svg'><span>About Us</span></a></li>
+                <li onclick="toggleMenu()"></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div class="page home">
+          <div id="studentName" class="card-title w3-panel w3-center w3-wide w3-xxlarge w3-serif"></div>
+          <div id="batchDetails" class="w3-row">
+            <table id="batchDetailsTable" class="w3-table w3-centered"> 
+              <tr class="batchDetailsTableHeader">
+                <td>Board</td>
+                <td>Grade</td>
+                <td>School</td>	
+              </tr>
+              <tr><td id="board"> </td>
+                <td id="grade"> </td>
+                <td id="school"> </td>	
+              </tr>
+            </table>
+          </div>
+          <br />
+          <!-- <div class="w3-padding"> -->
+            <div class="classTiming"><div >Class Timing</div><div id="classTiming"></div></div>
+          <!-- </div> -->
+          <br />
+          <div class="w3-center standalone">Contacts</div>
+          <div class="contacts">
+              <ul id="contacts">
+                <li><div>Student</div><div id="studentContact" >-</div></li>
+                <li><div>Parent / Guardian</div><div id="parentContact1">-</div></li>
+                <li><div>Parent / Guardian</div><div id="parentContact2">-</div></li>
+                <li><div>Parent / Guardian</div><div id="parentContact3">-</div></li>
+              </ul>
+          </div>
+          <br /><br />
+          <div class="w3-center"><button type="button" class="btn button" onclick="latest()">Latest Updates</button>    
+          </div>
+        </div>
+        <div class="page subjects">
+          <div id="listOfSubjects">
+            <div class="subjectsHeader" style="	display: none;">
+              <div >Subject</div>
+          </div>
+          </div>
+        </div>
+        
+          <div class="page calendar">
+              <div class="card">
+              <div id='calendarHead'>
+                <span id="previous" onclick="previous()"><img src='ico/round-arrow_left-24px.svg'></span>
+                <h3 class="card-header" id="monthAndYear"></h3>
+                <span id="next" onclick="next()"><img src='ico/round-arrow_right-24px.svg'></span>
+              </div>
+                  <table class="table" id="calendar">
+                      <thead>
+                      <tr>
+                          <th>Sun</th>
+                          <th>Mon</th>
+                          <th>Tue</th>
+                          <th>Wed</th>
+                          <th>Thu</th>
+                          <th>Fri</th>
+                          <th>Sat</th>
+                      </tr>
+                      </thead>
+          
+                      <tbody id="calendar-body">
+          
+                      </tbody>
+                  </table>
+              </div>
+              <!-- <br/> -->
+              <div class="dropdownContainer" id='calendarDd'>
+                  <div>Show</div>
+                  <select class="subjectsTUt" id='calendarOnlyDd' onchange='filterMonthDetails()'>
+                    <option>All</option>
+                    <option>Alerts</option>
+                    <option>Assignments</option>
+                    <option>Attendance</option>
+                    <option>Schedule</option>
+                  </select>
+                </div>
+
+              <div id="dateDetails"> </div>
+              <div id="monthDetails"></div>   
+              
+          </div>
+
+          <div class="page fees">
+              <div>
+                  <div class="feesPanel">
+                    <ul>
+                      <li>Total Pending</li>
+                      <li id="totalPending"></li>
+                    </ul>
+                    <ul>
+                      <li>Total Amount</li>
+                      <li id="totalFees"></li>
+                    </ul>
+                  </div>
+                  <hr />
+                  <div class="feesPanel">
+                    <ul>
+                      <li class='attention'>Next Due Date</li>
+                      <li id="nextDueDate"></li>
+                    </ul>
+                    <ul>
+                      <li class='attention'>Amount Due</li>
+                      <li id="amountDueOnDate"></li>
+                    </ul>
+                  </div>
+              </div>
+              <br />
+
+                <div class="feesTable w3-table">
+                  <div id="feesTableHeader">
+                    <div>Date</div>
+                    <div>Amount</div>
+                    <div>Status</div>
+                  </div>
+                </div>
+              <h6><p><b>Notice:</b> Please confirm the details before payment of fees.
+                This page cannot be used as a fees receipt </p></h6>
+          </div>
+          <div class = "page changeStudent" style='display: none'>
+              <form class="login">
+                  <div class="logo">
+                    <img width="90%"  src="ico/logo.svg">
+                  </div>
+                  <div class="login-form">
+                      <div>
+                        <img src="ico/account.svg">
+                        <input type="text" id="student" placeholder="ABC#######" value="ALT1901004" autocomplete="off"/>
+                      </div>
+                  <br>
+                   <div>
+                      <img src="ico/lock.svg" onclick="togglePwd()">
+                      <input type="password" id="pwd" placeholder="********" value="9892327839" autocomplete="off"/>
+                    </div>
+                    
+                  <br>
+                  <input type="button" value="Add Student" class="login-button btn btn-primary dropbtn"  onclick="form_data()"/>
+                  <br />
+                  <br />
+                  <h6>Scroll down for Student List</h6>
+                  </div>
+                </form>
+                <div class="studentListPage">
+                    <div class="studentList">
+                        <div id="studentListHeader">Student Name</div>
+                        <ul id="studentList"></ul>
+                </div>
+              </div>
+          </div>
+          <div id="subjectPage" class="page subjectPage">
+          </div>
+          <div  class="page chaptersPage" style='display: none'>
+              <div id="listOfChapters">
+              </div>
+          </div>
+          <div class="page testPage">
+            <div class="subjectsTermsUt">
+                <div class="dropdownContainer">
+                  <div>Show</div>
+                  <select class="subjectsTUt" id='testDd'>
+                    <option>All</option>
+                    <option>Passed</option>
+                    <option>Failed</option>
+                    <option>Absent</option>
+                    <option>Below_Average</option>
+                    <option>Average</option>
+                    <option>Above_Average</option>
+                    <option>Ranked First</option>
+                  </select>
+                </div>
+                <div class='br'></div>
+                <div>
+                    <div class="dropdownContainer">
+                        <div>Term</div>
+                        <select class="dropdown" id='termSelect'>
+                        </select>
+                      </div>
+                      <div class="dropdownContainer">
+                        <div>Unit Test</div>
+                        <select class="subjectsTUt" id='utSelect'>
+                        </select>
+                      </div>
+                </div> 
+                
+
+              </div>   
+
+            <div id="testData"></div>
+          </div>
+          <div class="page latestPage">
+            <div id='latestDate'></div>
+          </div>
+          <div class="page aboutPage">
+            <address>
+                <div class='classIcon'><img id='classIcon'></div>
+                <div id='className'></div>
+                <div>
+                    <div>Address</div><div id='classAddress'></div>
+                </div>
+                <div>
+                    <div>Contact </div><div id='classContact'></div>
+                </div>
+            </address>   
+            <br />
+            <br />
+            <br />
+            <div class='appDetails'>
+              <div class='w3-center bottom'>Powered by</div>
+              <address id='powered' class='w3-center'> <a href="https://sharadgacharya.bitbucket.io"><span class='appIcon'></span>1 by 0 Tech</a>
+              <div class='w3-center' id='termsAndConditions'><a href="https://sharadgacharya.bitbucket.io/terms.html">Terms and Conditions</a></div>
+              <div class='w3-center' id="privacyPolicy"><a href="https://sharadgacharya.bitbucket.io/privacy_policy.html">Privacy Policy</a></div>
+              </address>
+            </div>
+            
+          </div>
+      </div>  
+      <div class='page' id='loaderPage'>
+        <div id='canvas'></div>
+        <div>Loading...</div>
+      </div>
+      <div class='navbar-fixed-bottom'>1by0.in</div>
+      <div id="installWindow" >
+        We have detected an app on this page. Would you like to install it?
+        <br />
+        <div id='appdescription'><img src="ico/logo.svg"><span>Class Apart</span></div>
+        <br />
+        <div><div onclick='closeWindow()'>No</div><div id='install'>Yes</div></div>
+      </div>
+      <script type="text/javascript">
+      //procedure to get info for new student
+      function form_data(){
+        load();
+        console.log("form data");
+          var studentId = document.getElementById("student").value;
+          var start = studentId.substring(0,3);
+          var end = studentId.substring(4);
+          localStorage.setItem('studentId',studentId);
+          studentId = "student=" + studentId;
+          var pwd = document.getElementById("pwd").value;
+          pwd = "pwd=" + pwd;
+          console.log(pwd);
+          getInfo(studentId+'&'+pwd + '&first=true');
+      };
+
+      function toggleMenu()
+      {
+        var media = window.matchMedia("(max-width: 768px)");
+        if(media.matches)
+        {
+          $('#myNavbar').slideToggle('0.3s','swing');
+          $('#menuIcon').toggleClass('rotate');
+        }
+      }
+      function togglePwd() {
+        var pwd = document.getElementById("pwd");
+        if (pwd.type === "password")
+          pwd.type = "text";
+        else 
+          pwd.type = "password";
+      }
+      </script>
+    </body>
+</html>

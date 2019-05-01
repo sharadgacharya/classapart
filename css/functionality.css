@@ -1,0 +1,193 @@
+/*input text and button
+start*/
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.inputText
+{
+  background-color: #f9f9f9;
+  min-width: 160px;
+  color: black;
+  padding: 12px 16px;
+}
+/*end*/
+/*subject test data
+start*/
+/* .table{
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
+  background: white;
+} */
+.dataRow{
+  /*display: table-row;*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%
+} 
+
+.cell{
+  display: table-cell;
+  padding: 20px 20px;
+  text-align: center; 
+}
+.cell2{  
+  /*display: table-cell;*/
+  padding: 10px 10px;
+  text-align: center; 
+  min-width: 33%;
+  flex-grow: 1;
+  /*width: 25%;*/
+  /*float: left;*/
+}
+.chapterMarks{
+  width: 80%;
+}
+.date{    
+  vertical-align: middle;
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  /* padding: 18px; */
+  border-right-style: outset;
+  border-bottom-style: outset;
+  border-color: grey;
+  border-radius: 10px;
+  text-align: left;
+  outline: none;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.chapterNo::after {
+  content: attr(data-chapternames);
+  position: relative;
+  right: -2px;
+  background: grey;
+  width: 50%;
+  overflow: scroll;
+  display: none;
+}
+.chapterNo:hover::after {
+  display: block;
+  opacity: 1;
+  
+}
+
+.collapsible:hover {
+  filter: brightness(90%);
+}
+
+.collapsibleContent {
+  padding: 10px 5px;
+  background-color: white;
+  border: 2px inset white;
+  border-top-style: inset;
+  border-left-style: inset; 
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  border-right-style: outset;
+  border-bottom-style: outset;
+  margin-bottom: 10px;
+}
+/* #calendar{
+  border-collapse: separate; 
+  border-spacing: 2px;
+} */
+/* #calendar thead{
+  border-color:whitesmoke;
+  border-bottom: 1px solid;
+} */
+.card{
+  border: 1px solid;
+}
+#calendarHead > button{
+  font-weight: bold;
+  background-color: rgb(234,82,111);
+}
+#calendar {
+  background-color: var(--calendarBackground);
+}
+
+#calendar th{
+  background-color: var(--days);
+}
+#calendar tr > td{
+  border: none; 
+}
+.table>thead>tr>th {
+  vertical-align: bottom;
+  border-bottom: none;
+}
+#calendar td:hover,th :hover{
+	animation: blinker 0.25s linear 1;
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid; 
+  /* border-radius: 15px; */
+}
+@keyframes blinker {
+	50% {
+	  opacity: 0.5;
+	}
+  }
+.blinkTable{
+  animation: TableBlinker 0.25s ease 1;
+}
+  @keyframes TableBlinker {
+    50% {
+      opacity: 0.5;
+    }
+    }
+
+#dateDetails{
+	font-style: italic
+}    
+#dateDetails > div >div.asaa{
+  display: flex;
+  flex-direction: row;
+}
+#calendar td:after{
+	content: attr(data-date);
+}
+.green{
+	background: green;
+}
+
+.Passed{
+  background-color: var(--alerts)!important;
+  color: black;
+}
+.present{
+  background-color: var(--present);
+}
+.Failed {
+  background-color: var(--absent) !important;
+  color: black;
+}
+.AbsentTest{
+  background-color: black;
+  color: white; 
+}
+.Absent{
+  background-color: var(--absent); 
+}
+#calendar-body > tr > td[data-status="Weekly Off"]{
+  background-color: var(--weekOff);
+}
+output{
+  position: relative;
+}
+
+
+/*end        */
+/* chapternames attached to chapternumber in subject page */

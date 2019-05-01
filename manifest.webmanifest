@@ -1,0 +1,38 @@
+{"dir" : "ltr",
+    "lang" : "en",
+    "name" : "Class Apart",
+    "scope" : "/",
+    "display" : "standalone",
+    "start_url" : "/classapart.html",
+    "short_name" : "Class Apart",
+    "theme_color" : "transparent",
+    "description" : "Bridge the communication gap between tutorials/classes and parents",
+    "orientation" : "portrait",
+    "related_applications" : [],
+    "prefer_related_applications" : false,
+    "generated" : "true",
+    "theme_color": "#2c67aa",
+    "background_color": "whitesmoke",
+"icons": [
+        
+	{
+		"src": "ico/android-chrome-192x192.png",
+        
+		"sizes": "192x192",
+          
+		"type": "image/png"
+        
+	},
+
+        {
+
+            	"src": "ico/android-chrome-512x512.png",
+         
+		"sizes": "512x512",
+            
+		"type": "image/png"
+        
+	}
+    
+	]
+}
